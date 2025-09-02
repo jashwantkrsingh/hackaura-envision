@@ -9,7 +9,7 @@ const IdeasHub = () => {
 
   const categories = ["All", "Web Dev", "Mobile", "AI/ML", "Blockchain", "IoT", "Game Dev"];
 
-  const ideas = [
+  const allIdeas = [
     {
       id: 1,
       title: "AI-Powered Code Review Assistant",
@@ -69,8 +69,105 @@ const IdeasHub = () => {
       likes: 45,
       comments: 23,
       tags: ["Python", "NLP", "Mental Health"]
+    },
+    {
+      id: 7,
+      title: "Crypto Portfolio Tracker",
+      description: "Real-time cryptocurrency portfolio management with DeFi integration, yield farming analytics, and automated tax reporting.",
+      category: "Blockchain",
+      author: "Ryan Patel",
+      likes: 38,
+      comments: 11,
+      tags: ["Web3", "DeFi", "Crypto"]
+    },
+    {
+      id: 8,
+      title: "Smart Parking Solution",
+      description: "IoT-based smart parking system using computer vision to detect available spots and guide drivers through a mobile app.",
+      category: "IoT",
+      author: "Sophie Brown",
+      likes: 27,
+      comments: 9,
+      tags: ["Computer Vision", "IoT", "Mobile"]
+    },
+    {
+      id: 9,
+      title: "Collaborative Music Studio",
+      description: "Web-based DAW that allows musicians to collaborate in real-time, share stems, and create music together from anywhere.",
+      category: "Web Dev",
+      author: "Marcus Johnson",
+      likes: 33,
+      comments: 16,
+      tags: ["WebAudio", "Real-time", "Music"]
+    },
+    {
+      id: 10,
+      title: "Personal Finance AI Coach",
+      description: "Machine learning-powered personal finance advisor that analyzes spending patterns and provides personalized budgeting advice.",
+      category: "AI/ML",
+      author: "Lisa Zhang",
+      likes: 41,
+      comments: 18,
+      tags: ["Machine Learning", "Finance", "Analytics"]
+    },
+    {
+      id: 11,
+      title: "Augmented Reality Shopping",
+      description: "AR mobile app that lets users try on clothes, furniture, and accessories virtually before purchasing online.",
+      category: "Mobile",
+      author: "Jake Williams",
+      likes: 52,
+      comments: 21,
+      tags: ["AR", "E-commerce", "Mobile"]
+    },
+    {
+      id: 12,
+      title: "Gaming Tournament Platform",
+      description: "Comprehensive platform for organizing esports tournaments with automated bracket generation, streaming integration, and prize distribution.",
+      category: "Game Dev",
+      author: "Amy Chen",
+      likes: 19,
+      comments: 7,
+      tags: ["Gaming", "Esports", "Streaming"]
+    },
+    {
+      id: 13,
+      title: "Smart Recipe Generator",
+      description: "AI-powered app that generates recipes based on available ingredients, dietary restrictions, and nutritional goals.",
+      category: "AI/ML",
+      author: "Carlos Rodriguez",
+      likes: 35,
+      comments: 14,
+      tags: ["AI", "Nutrition", "Food"]
+    },
+    {
+      id: 14,
+      title: "Eco-Friendly Transportation Tracker",
+      description: "App that tracks your carbon footprint from transportation choices and suggests eco-friendly alternatives with gamification.",
+      category: "Mobile",
+      author: "Emma Thompson",
+      likes: 28,
+      comments: 10,
+      tags: ["Sustainability", "Transport", "Gamification"]
+    },
+    {
+      id: 15,
+      title: "3D Printing Marketplace",
+      description: "Decentralized marketplace for 3D printing designs with blockchain-based licensing and automated royalty distribution.",
+      category: "Blockchain",
+      author: "Tom Anderson",
+      likes: 23,
+      comments: 8,
+      tags: ["3D Printing", "NFT", "Marketplace"]
     }
   ];
+
+  const [ideas, setIdeas] = useState(allIdeas.slice(0, 8)); // Show first 8 ideas initially
+
+  const generateRandomIdea = () => {
+    const randomIdeas = [...allIdeas].sort(() => Math.random() - 0.5).slice(0, 8);
+    setIdeas(randomIdeas);
+  };
 
   const filteredIdeas = ideas.filter(idea => {
     const matchesSearch = idea.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -101,10 +198,11 @@ const IdeasHub = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={generateRandomIdea}
             className="btn-primary flex items-center space-x-2 mt-4 md:mt-0"
           >
             <Plus className="w-5 h-5" />
-            <span>Generate New Idea</span>
+            <span>Generate New Ideas</span>
           </motion.button>
         </div>
 

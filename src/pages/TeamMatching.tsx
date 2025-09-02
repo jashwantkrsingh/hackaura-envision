@@ -5,8 +5,10 @@ import { useState } from "react";
 
 const TeamMatching = () => {
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [selectedCollege, setSelectedCollege] = useState("Any College");
 
   const skills = ["React", "Python", "AI/ML", "Design", "Mobile", "Backend", "DevOps", "Blockchain"];
+  const colleges = ["Any College", "Stanford University", "MIT", "University of Washington", "Columbia University", "UT Austin", "University of Chicago", "Oregon State University"];
 
   const teammates = [
     {
@@ -14,6 +16,7 @@ const TeamMatching = () => {
       name: "Sarah Kim",
       role: "Full-Stack Developer",
       location: "San Francisco, CA",
+      college: "Stanford University",
       skills: ["React", "Python", "PostgreSQL"],
       rating: 4.9,
       projects: 12,
@@ -26,6 +29,7 @@ const TeamMatching = () => {
       name: "Mike Johnson",
       role: "ML Engineer",
       location: "Boston, MA",
+      college: "MIT",
       skills: ["Python", "TensorFlow", "AI/ML"],
       rating: 4.8,
       projects: 8,
@@ -38,6 +42,7 @@ const TeamMatching = () => {
       name: "Emily Davis",
       role: "UX/UI Designer",
       location: "Seattle, WA",
+      college: "University of Washington",
       skills: ["Design", "Figma", "User Research"],
       rating: 4.9,
       projects: 15,
@@ -50,6 +55,7 @@ const TeamMatching = () => {
       name: "Alex Chen",
       role: "Mobile Developer",
       location: "New York, NY",
+      college: "Columbia University",
       skills: ["React Native", "Swift", "Mobile"],
       rating: 4.7,
       projects: 10,
@@ -62,6 +68,7 @@ const TeamMatching = () => {
       name: "David Wong",
       role: "DevOps Engineer",
       location: "Austin, TX",
+      college: "UT Austin",
       skills: ["Docker", "AWS", "DevOps"],
       rating: 4.8,
       projects: 9,
@@ -74,17 +81,51 @@ const TeamMatching = () => {
       name: "Jessica Liu",
       role: "Backend Developer",
       location: "Chicago, IL",
+      college: "University of Chicago",
       skills: ["Node.js", "Backend", "Database"],
       rating: 4.9,
       projects: 14,
       bio: "Expert in building robust APIs and managing complex database architectures.",
       avatar: "JL",
       isAISuggested: false
+    },
+    {
+      id: 7,
+      name: "Ryan Patel",
+      role: "Data Scientist",
+      location: "Palo Alto, CA",
+      college: "Stanford University",
+      skills: ["Python", "R", "Machine Learning"],
+      rating: 4.8,
+      projects: 11,
+      bio: "Analyzing complex datasets to drive business insights and predictions.",
+      avatar: "RP",
+      isAISuggested: false
+    },
+    {
+      id: 8,
+      name: "Sophie Brown",
+      role: "Frontend Developer",
+      location: "Portland, OR",
+      college: "Oregon State University",
+      skills: ["Vue.js", "CSS", "Animation"],
+      rating: 4.7,
+      projects: 13,
+      bio: "Creating engaging user interfaces with smooth animations and interactions.",
+      avatar: "SB",
+      isAISuggested: true
     }
   ];
 
-  const aiSuggestedTeammates = teammates.filter(teammate => teammate.isAISuggested);
-  const otherTeammates = teammates.filter(teammate => !teammate.isAISuggested);
+  const filteredTeammates = teammates.filter(teammate => {
+    const matchesSkills = selectedSkills.length === 0 || 
+      selectedSkills.some(skill => teammate.skills.some(s => s.toLowerCase().includes(skill.toLowerCase())));
+    const matchesCollege = selectedCollege === "Any College" || teammate.college === selectedCollege;
+    return matchesSkills && matchesCollege;
+  });
+
+  const aiSuggestedTeammates = filteredTeammates.filter(teammate => teammate.isAISuggested);
+  const otherTeammates = filteredTeammates.filter(teammate => !teammate.isAISuggested);
 
   const toggleSkill = (skill: string) => {
     setSelectedSkills(prev => 
@@ -113,6 +154,7 @@ const TeamMatching = () => {
             <MapPin className="w-4 h-4" />
             <span>{teammate.location}</span>
           </div>
+          <div className="text-sm text-gray-500 mt-1">{teammate.college}</div>
         </div>
         <div className="text-right">
           <div className="flex items-center space-x-1 text-yellow-400 mb-1">
@@ -183,13 +225,15 @@ const TeamMatching = () => {
               </div>
 
               <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">Location</h3>
-                <select className="input-hackora w-full">
-                  <option>Any Location</option>
-                  <option>San Francisco, CA</option>
-                  <option>New York, NY</option>
-                  <option>Boston, MA</option>
-                  <option>Seattle, WA</option>
+                <h3 className="text-lg font-semibold mb-3">College</h3>
+                <select 
+                  className="input-hackora w-full"
+                  value={selectedCollege}
+                  onChange={(e) => setSelectedCollege(e.target.value)}
+                >
+                  {colleges.map((college) => (
+                    <option key={college} value={college}>{college}</option>
+                  ))}
                 </select>
               </div>
 
