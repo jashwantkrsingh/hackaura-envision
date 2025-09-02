@@ -52,15 +52,25 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				// Hackora Custom Colors
+				'hackora-surface': 'hsl(var(--hackora-surface))',
+				'hackora-surface-hover': 'hsl(var(--hackora-surface-hover))',
+				'hackora-text': {
+					primary: 'hsl(var(--hackora-text-primary))',
+					secondary: 'hsl(var(--hackora-text-secondary))',
+					muted: 'hsl(var(--hackora-text-muted))'
+				},
+				gray: {
+					50: 'hsl(0 0% 97%)',
+					100: 'hsl(0 0% 94%)',
+					200: 'hsl(0 0% 87%)',
+					300: 'hsl(0 0% 80%)',
+					400: 'hsl(0 0% 64%)',
+					500: 'hsl(0 0% 45%)',
+					600: 'hsl(0 0% 32%)',
+					700: 'hsl(0 0% 20%)',
+					800: 'hsl(0 0% 12%)',
+					900: 'hsl(0 0% 7%)'
 				}
 			},
 			borderRadius: {
