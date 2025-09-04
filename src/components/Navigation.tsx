@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Home, User, Lightbulb, Users, MessageCircle, Briefcase } from "lucide-react";
+import { Home, User, Lightbulb, Users, MessageCircle } from "lucide-react";
 
 const navItems = [
   { path: "/dashboard", icon: Home, label: "Dashboard" },
@@ -18,19 +18,19 @@ export const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/dashboard" className="flex items-center space-x-2">
-            <motion.div
+            <motion.img
+              src="/logo.png"
+              alt="Hackora Logo"
+              className="h-12 w-auto"   // ⬅️ increased size
               whileHover={{ scale: 1.05 }}
-              className="text-white font-bold text-xl"
-            >
-              Hackora ✨
-            </motion.div>
+            />
           </Link>
 
           <div className="flex space-x-8">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
-              
+
               return (
                 <Link
                   key={item.path}
