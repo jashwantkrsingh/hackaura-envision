@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Lightbulb, Users, MessageCircle, Github } from "lucide-react";
+import { Lightbulb, Users, MessageCircle, Github, X } from "lucide-react";
+import { useState } from "react";
 
 const Landing = () => {
+  const [showAbout, setShowAbout] = useState(false);
+
   const features = [
     {
       icon: Lightbulb,
@@ -70,6 +73,7 @@ const Landing = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => setShowAbout(true)}
                 className="btn-outline text-lg px-8 py-4"
               >
                 Learn More
@@ -131,7 +135,7 @@ const Landing = () => {
             </div>
             
             <div className="flex space-x-8 text-gray-400">
-              <Link to="/about" className="hover:text-white transition-colors">About</Link>
+              <button onClick={() => setShowAbout(true)} className="hover:text-white transition-colors">About</button>
               <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
               <a href="https://github.com" className="hover:text-white transition-colors flex items-center space-x-1">
                 <Github size={16} />
@@ -141,10 +145,173 @@ const Landing = () => {
           </div>
           
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>&copy; 2024 Hackora. Built for the community, by the community.</p>
+            <p>&copy; 2025 Hackora | Crafted with passion by Trio Tech.</p>
           </div>
         </div>
       </footer>
+
+      {/* About Modal */}
+      {showAbout && (
+        <motion.div 
+          className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            className="w-full h-full bg-gray-900 overflow-y-auto"
+          >
+            <motion.div 
+              className="flex justify-between items-center p-6 border-b border-gray-800"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            >
+              <h2 className="text-4xl font-bold">About Hackora</h2>
+              <motion.button
+                onClick={() => setShowAbout(false)}
+                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <X size={28} />
+              </motion.button>
+            </motion.div>
+
+            <motion.div 
+              className="p-8 max-w-4xl mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
+              
+              <div className="space-y-8 text-gray-300 leading-relaxed">
+                <motion.div 
+                  className="text-center mb-12"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+                >
+                  <p className="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
+                    Hackora is a student-focused innovation platform designed to solve the problem of team 
+                    formation, idea generation, and mentorship for hackathons, projects, and startups. It acts 
+                    as an all-in-one ecosystem where students can find the right teammates, explore AI-generated 
+                    project ideas, and collaborate through an active community.
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="grid md:grid-cols-2 gap-8"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                >
+                  <motion.div 
+                    className="space-y-6"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                  >
+                    <h3 className="text-2xl font-semibold text-white">Key Features</h3>
+                    <ul className="space-y-4">
+                      {[
+                        "AI-powered project idea generation to spark creativity",
+                        "Smart team matching based on skills and interests",
+                        "Active community channels for real-time collaboration",
+                        "Mentorship opportunities with industry professionals",
+                        "Project showcase and portfolio building tools"
+                      ].map((feature, index) => (
+                        <motion.li 
+                          key={index}
+                          className="flex items-start space-x-3"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: 0.7 + index * 0.1, ease: "easeOut" }}
+                        >
+                          <span className="text-blue-400 mt-1 text-xl">•</span>
+                          <span className="text-lg">{feature}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="space-y-6"
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                  >
+                    <h3 className="text-2xl font-semibold text-white">Our Mission</h3>
+                    <motion.div 
+                      className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-gray-700"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
+                    >
+                      <p className="text-lg italic text-center">
+                        "Empowering the next generation of innovators to build, collaborate, and create the future together."
+                      </p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="space-y-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
+                    >
+                      <h4 className="text-lg font-semibold text-white">Why Choose Hackora?</h4>
+                      <ul className="space-y-2 text-gray-300">
+                        {[
+                          "Streamlined team formation process",
+                          "AI-driven idea generation",
+                          "Real-time collaboration tools",
+                          "Industry mentorship programs",
+                          "Portfolio building features"
+                        ].map((benefit, index) => (
+                          <motion.li 
+                            key={index}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: 1.1 + index * 0.1, ease: "easeOut" }}
+                          >
+                            • {benefit}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+
+                <motion.div 
+                  className="text-center mt-12"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
+                >
+                  <Link to="/auth">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setShowAbout(false)}
+                      className="btn-primary text-lg px-12 py-4"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 1.3, ease: "easeOut" }}
+                    >
+                      Get Started Today
+                    </motion.button>
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };
