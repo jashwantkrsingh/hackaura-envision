@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Search, Plus, Heart, MessageCircle, Star, X } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Add this import
 
 const allIdeas = [
 	{
@@ -18,7 +19,7 @@ An AI-driven assistant that analyzes code for bugs, vulnerabilities, and style i
 Technologies Used:
 LLMs (GPT-4/5, CodeBERT), static analysis tools (ESLint, SonarQube, Pylint), Python/Node.js backend, React.js dashboard, GitHub Actions/GitLab CI, Docker/Kubernetes, PostgreSQL/MongoDB, OWASP guidelines.`,
 		category: "AI/ML",
-		author: "Sarah Kim",
+		author: "Mehul Kumar Singh",
 		likes: 24,
 		comments: ["This is great!", "Can it work with Java?"],
 		tags: ["React", "Python", "OpenAI"],
@@ -36,7 +37,7 @@ A platform to track food consumption, reduce waste with predictions, highlight e
 Technologies Used:
 Mobile app (React Native/Flutter), backend (Node.js/Python), PostgreSQL, AI/ML for consumption prediction, IoT sensors, cloud deployment (AWS/Azure).`,
 		category: "Mobile",
-		author: "Mike Johnson",
+		author: "Khushi Yadav",
 		likes: 18,
 		comments: ["Nice idea", "Will it support Android and iOS?"],
 		tags: ["React Native", "Firebase", "Sustainability"],
@@ -54,7 +55,7 @@ Blockchain platform where students create study groups, participate in tasks, an
 Technologies Used:
 Solidity smart contracts, Ethereum blockchain, Web3.js, React.js frontend, Node.js backend, IPFS for secure data storage.`,
 		category: "Blockchain",
-		author: "Alex Chen",
+		author: "Tanusha Gupta",
 		likes: 31,
 		comments: ["Love the Web3 angle!", "Can we add rewards system?"],
 		tags: ["Solidity", "Web3", "Education"],
@@ -72,7 +73,7 @@ IoT system that learns user routines, monitors appliance usage, and optimizes en
 Technologies Used:
 Arduino/Raspberry Pi, Python backend, Machine Learning for predictive optimization, Mobile/React dashboard, MQTT protocol.`,
 		category: "IoT",
-		author: "Emily Davis",
+		author: "Rohan Mehta",
 		likes: 22,
 		comments: ["Super useful", "Need solar integration"],
 		tags: ["Arduino", "Machine Learning", "Energy"],
@@ -90,7 +91,7 @@ AI-powered chatbot providing 24/7 support, detecting emotional states via NLP, r
 Technologies Used:
 Python, NLP libraries (spaCy, NLTK), TensorFlow/PyTorch, React Native, Firebase database and notifications.`,
 		category: "AI/ML",
-		author: "Jessica Liu",
+		author: "Narendra Modi",
 		likes: 45,
 		comments: ["Very thoughtful!", "Can it detect stress?"],
 		tags: ["Python", "NLP", "Mental Health"],
@@ -108,7 +109,7 @@ IoT system using sensors and computer vision to detect available spots and guide
 Technologies Used:
 IoT sensors, Raspberry Pi/Arduino, OpenCV, React Native app, Node.js backend, Firebase for real-time updates.`,
 		category: "IoT",
-		author: "Sophie Brown",
+		author: "Amrit Thakur",
 		likes: 27,
 		comments: ["Would love to see this in cities!", "Can we use sensors too?"],
 		tags: ["Computer Vision", "IoT", "Mobile"],
@@ -126,7 +127,7 @@ Web-based Digital Audio Workstation allowing real-time collaboration, sharing st
 Technologies Used:
 WebAudio API, Node.js backend, WebRTC, React.js frontend, cloud storage, OAuth/Firebase authentication.`,
 		category: "Web Dev",
-		author: "Marcus Johnson",
+		author: "Sonal Kapoor",
 		likes: 33,
 		comments: ["Awesome for creators!", "Latency might be an issue"],
 		tags: ["WebAudio", "Real-time", "Music"],
@@ -144,7 +145,7 @@ Machine learning-powered advisor that analyzes spending, provides personalized b
 Technologies Used:
 ML/AI, Python/Node.js backend, React.js frontend, PostgreSQL/MongoDB, bank API integrations.`,
 		category: "AI/ML",
-		author: "Lisa Zhang",
+		author: "Priya Singh",
 		likes: 41,
 		comments: ["I would use this daily!", "Needs bank integration support."],
 		tags: ["Machine Learning", "Finance", "Analytics"],
@@ -162,7 +163,7 @@ AR mobile app allowing users to visualize products on themselves or in their env
 Technologies Used:
 ARKit / ARCore, React Native, Node.js backend, cloud deployment with AWS/Firebase.`,
 		category: "Mobile",
-		author: "Jake Williams",
+		author: "Karan Johar",
 		likes: 52,
 		comments: ["This is the future of e-commerce!"],
 		tags: ["AR", "E-commerce", "Mobile"],
@@ -180,7 +181,7 @@ Platform with automated brackets, streaming integration, and prize management fo
 Technologies Used:
 React.js frontend, Node.js backend, Twitch/YouTube streaming integration, MongoDB database, Discord bots.`,
 		category: "Game Dev",
-		author: "Amy Chen",
+		author: "Aman Verma",
 		likes: 19,
 		comments: ["Love it!", "Would be cool with Discord integration."],
 		tags: ["Gaming", "Esports", "Streaming"],
@@ -197,6 +198,7 @@ const IdeasHub = () => {
 	const [newComment, setNewComment] = useState("");
 	const [selectedIdea, setSelectedIdea] = useState(null); // For modal
 	const [modalComment, setModalComment] = useState(""); // Add this state for modal input
+	const navigate = useNavigate(); // Add this line
 
 	const categories = [
 		"All",
@@ -275,18 +277,32 @@ const IdeasHub = () => {
 						</p>
 					</motion.div>
 
-					<motion.button
-						initial={{ opacity: 0, x: 20 }}
-						animate={{ opacity: 1, x: 0 }}
-						transition={{ duration: 0.6, delay: 0.2 }}
-						whileHover={{ scale: 1.05 }}
-						whileTap={{ scale: 0.95 }}
-						onClick={generateRandomIdea}
-						className="btn-primary flex items-center space-x-2 mt-4 md:mt-0"
-					>
-						<Plus className="w-5 h-5" />
-						<span>Generate New Ideas</span>
-					</motion.button>
+					<div className="flex gap-4">
+						<motion.button
+							initial={{ opacity: 0, x: 20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.6, delay: 0.2 }}
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.95 }}
+							onClick={generateRandomIdea}
+							className="btn-primary flex items-center space-x-2 mt-4 md:mt-0"
+						>
+							<Plus className="w-5 h-5" />
+							<span>Generate New Ideas</span>
+						</motion.button>
+						<motion.button
+							initial={{ opacity: 0, x: 20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.6, delay: 0.3 }}
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.95 }}
+							onClick={() => navigate("/add-idea")}
+							className="btn-primary flex items-center space-x-2 mt-4 md:mt-0"
+						>
+							<Plus className="w-5 h-5" />
+							<span>Add New Idea</span>
+						</motion.button>
+					</div>
 				</div>
 
 				{/* Search + Filters */}
