@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Navigation } from "@/components/Navigation";
 import { Lightbulb, Users, MessageCircle } from "lucide-react";
+import { Layout } from "../components/Layout";
 
 const Dashboard = () => {
   const dashboardCards = [
@@ -29,9 +29,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black">
-      <Navigation />
-      
+    <Layout>
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Welcome Banner */}
         <motion.div
@@ -96,7 +94,7 @@ const Dashboard = () => {
           ))}
         </motion.div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

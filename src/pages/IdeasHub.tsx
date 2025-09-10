@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { Navigation } from "@/components/Navigation";
 import { Search, Plus, Heart, MessageCircle, Star, X } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Add this import
+import { Layout } from "../components/Layout";
 
 const allIdeas = [
 	{
@@ -260,9 +260,7 @@ const IdeasHub = () => {
 	});
 
 	return (
-		<div className="min-h-screen bg-black">
-			<Navigation />
-
+		<Layout>
 			<div className="max-w-7xl mx-auto px-4 py-12">
 				{/* Header */}
 				<div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
@@ -501,7 +499,7 @@ const IdeasHub = () => {
 					</motion.div>
 				</div>
 			)}
-		</div>
+		</Layout>
 	);
 };
 

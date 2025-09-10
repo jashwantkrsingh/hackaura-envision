@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home, User, Lightbulb, Users, MessageCircle } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 const navItems = [
   { path: "/dashboard", icon: Home, label: "Dashboard" },
@@ -26,26 +27,37 @@ export const Navigation = () => {
             />
           </Link>
 
-          <div className="flex space-x-8">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = location.pathname === item.path;
+          <div className="flex items-center space-x-6">
+            <div className="flex space-x-8">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
 
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl transition-all duration-200 ${
-                    isActive
-                      ? "bg-white text-black"
-                      : "text-gray-400 hover:text-white hover:bg-gray-900"
-                  }`}
-                >
-                  <Icon size={18} />
-                  <span className="font-medium">{item.label}</span>
-                </Link>
-              );
-            })}
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-xl transition-all duration-200 ${
+                      isActive
+                        ? "bg-white text-black"
+                        : "text-gray-400 hover:text-white hover:bg-gray-900"
+                    }`}
+                  >
+                    <Icon size={18} />
+                    <span className="font-medium">{item.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center">
+              <SignedOut>
+                <SignInButton mode="modal" />
+              </SignedOut>
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+            </div>
           </div>
         </div>
       </div>

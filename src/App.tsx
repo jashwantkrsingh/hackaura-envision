@@ -12,35 +12,30 @@ import TeamMatching from "./pages/TeamMatching";
 import CommunityHub from "./pages/CommunityHub";
 import Workspace from "./pages/Workspace";
 import NotFound from "./pages/NotFound";
-import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-const App = () => {
-  const [ideas, setIdeas] = useState([]); // Lift state up for sharing
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/ideas" element={<IdeasHub />} />
-            <Route path="/teams" element={<TeamMatching />} />
-            <Route path="/community" element={<CommunityHub />} />
-            <Route path="/workspace/:id" element={<Workspace />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/ideas" element={<IdeasHub />} />
+          <Route path="/teams" element={<TeamMatching />} />
+          <Route path="/community" element={<CommunityHub />} />
+          <Route path="/workspace/:id" element={<Workspace />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;
