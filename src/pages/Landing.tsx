@@ -137,7 +137,7 @@ const Landing = () => {
             <div className="flex space-x-8 text-gray-400">
               <button onClick={() => setShowAbout(true)} className="hover:text-white transition-colors">About</button>
               <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
-              <a href="https://github.com" className="hover:text-white transition-colors flex items-center space-x-1">
+              <a href="https://github.com/jashwantkrsingh/hackaura-envision.git" className="hover:text-white transition-colors flex items-center space-x-1">
                 <Github size={16} />
                 <span>GitHub</span>
               </a>

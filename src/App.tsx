@@ -11,6 +11,7 @@ import IdeasHub from "./pages/IdeasHub";
 import TeamMatching from "./pages/TeamMatching";
 import CommunityHub from "./pages/CommunityHub";
 import Workspace from "./pages/Workspace";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/teams" element={<TeamMatching />} />
           <Route path="/community" element={<CommunityHub />} />
           <Route path="/workspace/:id" element={<Workspace />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
