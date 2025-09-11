@@ -71,7 +71,7 @@ const FindTeammates = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mt-12"
         >
-          <Link to="/teams">
+          <Link to="/auth">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

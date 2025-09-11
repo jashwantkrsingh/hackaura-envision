@@ -71,13 +71,13 @@ const CommunityInfo = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mt-12"
         >
-          <Link to="/community">
+          <Link to="/auth">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-cta text-lg px-10 py-4"
             >
-              Go to Community Hub
+              Sign in to join Community
             </motion.button>
           </Link>
         </motion.div>
