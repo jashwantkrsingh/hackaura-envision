@@ -114,11 +114,31 @@ const Landing = () => {
                   viewport={{ once: true }}
                   className="card-hover text-center"
                 >
-                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <Icon className="w-8 h-8 text-black" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                  {feature.title.includes("Find Ideas") ? (
+                    <Link to="/find-ideas">
+                      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <Icon className="w-8 h-8 text-black" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                      <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                    </Link>
+                  ) : feature.title.includes("Find Teammates") ? (
+                    <Link to="/find-teammates">
+                      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <Icon className="w-8 h-8 text-black" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                      <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                    </Link>
+                  ) : (
+                    <Link to="/community-info">
+                      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <Icon className="w-8 h-8 text-black" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                      <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                    </Link>
+                  )}
                 </motion.div>
               );
             })}

@@ -11,7 +11,8 @@ const Contact = () => {
       linkedin: "https://www.linkedin.com/in/mehul-kumar-singh-655b5432b",
       location: "Kolkata, India",
       bio: "Passionate about building scalable web applications and leading innovative projects. Specializes in React, Node.js, and cloud technologies.",
-      avatar: "MS"
+      avatar: "MS",
+      avatarUrl: "/Mehul.jpg"
     },
     {
       name: "Amrit Raj",
@@ -21,17 +22,19 @@ const Contact = () => {
       linkedin: "https://www.linkedin.com/in/amrit-raj-076a1b301",
       location: "Delhi, India",
       bio: "Backend specialist with strong expertise in server architecture, database design, and cloud infrastructure. Ensures robust and scalable systems.",
-      avatar: "AR"
+      avatar: "AR",
+      avatarUrl: "/amrit.jpg"
     },
     {
       name: "Jashwant Kumar Singh",
-      role: "idea developer & UI/UX Designer",
+      role: "Idea developer & UI/UX Designer",
       email: "jashwantkumarsingh.13@gmail.com",
       github: "https://github.com/jashwantkrsingh",
       linkedin: "https://www.linkedin.com/in/jashwant-kumar-singh-630425331",
       location: "Kolkata, India",
       bio: "Creative designer with expertise in user experience design and modern real life ideas thinker. Focuses on creating intuitive and beautiful interfaces.",
-      avatar: "JS"
+      avatar: "JS",
+      avatarUrl: "/jashwant.jpg"
     }
   ];
 
@@ -46,9 +49,17 @@ const Contact = () => {
       <div className="p-8">
         {/* Avatar and Basic Info */}
         <div className="flex items-start space-x-4 mb-6">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center font-bold text-white text-xl">
-            {member.avatar}
-          </div>
+          {member.avatarUrl ? (
+            <img
+              src={member.avatarUrl}
+              alt={member.name}
+              className="w-16 h-16 rounded-full object-cover"
+            />
+          ) : (
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center font-bold text-white text-xl">
+              {member.avatar}
+            </div>
+          )}
           <div className="flex-1">
             <h3 className="text-2xl font-bold text-white mb-1">{member.name}</h3>
             <p className="text-blue-400 font-medium mb-2">{member.role}</p>

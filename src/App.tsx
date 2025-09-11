@@ -13,6 +13,9 @@ import CommunityHub from "./pages/CommunityHub";
 import Workspace from "./pages/Workspace";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import FindIdeas from "./pages/FindIdeas";
+import FindTeammates from "./pages/FindTeammates";
+import CommunityInfo from "./pages/CommunityInfo";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +31,9 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/ideas" element={<IdeasHub />} />
+          <Route path="/find-ideas" element={<FindIdeas />} />
+          <Route path="/find-teammates" element={<FindTeammates />} />
+          <Route path="/community-info" element={<CommunityInfo />} />
           <Route path="/teams" element={<TeamMatching />} />
           <Route path="/community" element={<CommunityHub />} />
           <Route path="/workspace/:id" element={<Workspace />} />

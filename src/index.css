@@ -102,6 +102,11 @@ All colors MUST be HSL. Black/White/Gray theme only.
     @apply border border-white text-white hover:bg-white hover:text-black px-6 py-3 rounded-2xl font-medium transition-all duration-200;
   }
 
+  /* Emphasized CTA Button */
+  .btn-cta {
+    @apply bg-white text-black hover:bg-gray-200 px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-xl ring-2 ring-white/60 hover:ring-white/80 hover:shadow-2xl;
+  }
+
   /* Hackora Card Variants */
   .card-primary {
     @apply bg-hackora-surface border border-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300;
