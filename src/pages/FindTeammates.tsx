@@ -77,7 +77,7 @@ const FindTeammates = () => {
               whileTap={{ scale: 0.95 }}
               className="btn-cta text-lg px-10 py-4"
             >
-              Start Finding Teammates
+              Sign in to Start Finding Teammates
             </motion.button>
           </Link>
         </motion.div>

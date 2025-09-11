@@ -77,7 +77,7 @@ const FindIdeas = () => {
               whileTap={{ scale: 0.95 }}
               className="btn-cta text-lg px-10 py-4"
             >
-              Start Finding Ideas
+              Sign in to Start Finding Ideas
             </motion.button>
           </Link>
         </motion.div>
